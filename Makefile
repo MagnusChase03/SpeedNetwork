@@ -17,7 +17,7 @@ $(TARGET): main.o $(OBJ_FILES)
 main.o: main.c
 	$(CC) -c -o $@ $<
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c -o $@ $<
 
 clean:

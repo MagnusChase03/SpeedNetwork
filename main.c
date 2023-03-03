@@ -2,13 +2,9 @@
 
 int main() {
 
-    Matrix a = createMatrix(2, 3);
-    Matrix b = createMatrix(3, 2);
-    Matrix c = dot(a, b);
-    print(c);
+    Matrix a = createRandomMatrix(2, 3);
+    print(a);
 
-    freeMatrix(c);
-    freeMatrix(b);
     freeMatrix(a);
 
     return 0;

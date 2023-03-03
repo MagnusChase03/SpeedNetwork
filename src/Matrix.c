@@ -17,6 +17,25 @@ Matrix createMatrix(int rows, int cols) {
 
 }
 
+Matrix createRandomMatrix(int rows, int cols) {
+
+    srand(time(0));
+
+    Matrix m = createMatrix(rows, cols);
+    for (int i = 0; i < m.rows; i++) {
+
+        for (int j = 0; j < m.cols; j++) {
+
+            m.data[i][j] = (double) rand() / RAND_MAX;
+
+        }
+
+    }
+
+    return m;
+
+}
+
 void freeMatrix(Matrix m) {
 
     for (int i = 0; i < m.rows; i++) {
@@ -50,6 +69,23 @@ Matrix add(Matrix a, Matrix b) {
     }
 
     return c;
+
+}
+
+Matrix mult(Matrix m, double x) {
+
+    Matrix y = createMatrix(m.rows, m.cols);
+    for (int i = 0; i < m.rows; i++) {
+
+        for (int j = 0; j < m.cols; j++) {
+
+            y.data[i][j] *= x;
+        
+        }
+
+    }
+
+    return y;
 
 }
 

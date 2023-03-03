@@ -28,3 +28,24 @@ Matrix forward(DenseLayer d, Matrix m) {
     return h3;
 
 }
+
+Matrix backward(DenseLayer d, Matrix i, Matrix e) {
+
+    Matrix i2 = transpose(i);        
+    Matrix c = dot(i2, e);
+
+    Matrix w = sub(d.weights, c);
+    copyMatrix(w, d.weights);
+    
+    freeMatrix(w);
+    freeMatrix(c);
+
+    Matrix e2 = transpose(e);
+    Matrix e3 = dot(d.weights, e2);
+
+    freeMatrix(e2);
+    freeMatrix(i2);
+
+    return e3;
+
+}

@@ -48,6 +48,27 @@ void freeMatrix(Matrix m) {
 
 }
 
+void copyMatrix(Matrix a, Matrix b) {
+
+    if (a.cols != b.cols && a.rows != b.rows) {
+
+        fprintf(stderr, "Error: Matrix dimensions did not match for addition.");
+        exit(1);
+
+    }
+
+    for (int i = 0; i < a.rows; i++) {
+
+        for (int j = 0; j < a.cols; j++) {
+
+            b.data[i][j] = a.data[i][j];
+
+        }
+
+    }
+
+}
+
 Matrix add(Matrix a, Matrix b) {
 
     if (a.cols != b.cols && a.rows != b.rows) {
@@ -63,6 +84,30 @@ Matrix add(Matrix a, Matrix b) {
         for (int j = 0; j < a.cols; j++) {
 
             c.data[i][j] = a.data[i][j] + b.data[i][j];
+
+        }
+
+    }
+
+    return c;
+
+}
+
+Matrix sub(Matrix a, Matrix b) {
+
+    if (a.cols != b.cols && a.rows != b.rows) {
+
+        fprintf(stderr, "Error: Matrix dimensions did not match for addition.");
+        exit(1);
+
+    }
+
+    Matrix c = createMatrix(a.rows, a.cols);
+    for (int i = 0; i < a.rows; i++) {
+
+        for (int j = 0; j < a.cols; j++) {
+
+            c.data[i][j] = a.data[i][j] - b.data[i][j];
 
         }
 
@@ -131,6 +176,23 @@ Matrix sigmoidMatrix(Matrix m) {
         for (int j = 0; j < m.cols; j++) {
 
             y.data[i][j] = sigmoid(m.data[i][j]);
+
+        }
+
+    }
+
+    return y;
+
+}
+
+Matrix transpose(Matrix m) {
+
+    Matrix y = createMatrix(m.cols, m.rows);
+    for (int i = 0; i < m.rows; i++) {
+
+        for (int j = 0; j < m.cols; j++) {
+
+            y.data[j][i] = m.data[i][j];
 
         }
 

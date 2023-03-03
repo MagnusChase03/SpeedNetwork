@@ -29,6 +29,30 @@ void freeMatrix(Matrix m) {
 
 }
 
+Matrix add(Matrix a, Matrix b) {
+
+    if (a.cols != b.cols && a.rows != b.rows) {
+
+        fprintf(stderr, "Error: Matrix dimensions did not match for addition.");
+        exit(1);
+
+    }
+
+    Matrix c = createMatrix(a.rows, a.cols);
+    for (int i = 0; i < a.rows; i++) {
+
+        for (int j = 0; j < a.cols; j++) {
+
+            c.data[i][j] = a.data[i][j] + b.data[i][j];
+
+        }
+
+    }
+
+    return c;
+
+}
+
 Matrix dot(Matrix a, Matrix b) {
 
     if (a.cols != b.rows) {

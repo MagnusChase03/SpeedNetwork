@@ -1,11 +1,16 @@
 #include "src/Matrix.h"
+#include "src/DenseLayer.h"
 
 int main() {
 
-    Matrix a = createRandomMatrix(2, 3);
-    print(a);
+    DenseLayer d = createDenseLayer(3, 2);
+    Matrix i = createRandomMatrix(1, 3);
+    Matrix o = forward(d, i);
+    print(o);
 
-    freeMatrix(a);
+    freeMatrix(o);
+    freeMatrix(i);
+    freeDenseLayer(d);
 
     return 0;
 

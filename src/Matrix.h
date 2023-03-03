@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <time.h>
 
 typedef struct {
@@ -20,6 +21,7 @@ void freeMatrix(Matrix m);
 Matrix add(Matrix a, Matrix b);
 Matrix mult(Matrix m, double x);
 Matrix dot(Matrix a, Matrix b);
+Matrix sigmoidMatrix(Matrix m);
 
 void print(Matrix m);
 

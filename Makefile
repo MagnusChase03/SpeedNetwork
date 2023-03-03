@@ -1,5 +1,7 @@
 CC = gcc
 
+LIB_FLAGS = -lm
+
 SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
@@ -12,13 +14,13 @@ TARGET = $(BIN_DIR)/main
 all: $(TARGET)
 
 $(TARGET): main.o $(OBJ_FILES)
-	$(CC) -o $@ $^
+	$(CC) $(LIB_FLAGS) -o $@ $^
 
 main.o: main.c
-	$(CC) -c -o $@ $<
+	$(CC) $(LIB_FLAGS) -c -o $@ $<
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) -c -o $@ $<
+	$(CC) $(LIB_FLAGS) -c -o $@ $<
 
 clean:
 	rm -rf $(OBJ_DIR)/* $(BIN_DIR)/* main.o

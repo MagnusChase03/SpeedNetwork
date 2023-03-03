@@ -117,6 +117,29 @@ Matrix dot(Matrix a, Matrix b) {
 
 }
 
+double sigmoid(double x) {
+
+    return 1 / (1 + exp(-x));
+
+}
+
+Matrix sigmoidMatrix(Matrix m) {
+
+    Matrix y = createMatrix(m.rows, m.cols);
+    for (int i = 0; i < m.rows; i++) {
+
+        for (int j = 0; j < m.cols; j++) {
+
+            y.data[i][j] = sigmoid(m.data[i][j]);
+
+        }
+
+    }
+
+    return y;
+
+}
+
 void print(Matrix m) {
 
     for (int i = 0; i < m.rows; i++) {

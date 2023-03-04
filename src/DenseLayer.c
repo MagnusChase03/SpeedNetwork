@@ -29,15 +29,18 @@ Matrix forward(DenseLayer d, Matrix m) {
 
 }
 
-Matrix backward(DenseLayer d, Matrix i, Matrix e) {
+Matrix backward(DenseLayer d, Matrix i, Matrix e, double lr) {
 
     Matrix i2 = transpose(i);        
     Matrix c = dot(i2, e);
 
     Matrix w = sub(d.weights, c);
-    copyMatrix(w, d.weights);
-    
+    Matrix w2 = mult(w, lr);
     freeMatrix(w);
+
+    copyMatrix(w2, d.weights);
+    
+    freeMatrix(w2);
     freeMatrix(c);
 
     Matrix e2 = transpose(e);

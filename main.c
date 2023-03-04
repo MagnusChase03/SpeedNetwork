@@ -11,7 +11,7 @@ int main() {
 
     Matrix e = createRandomMatrix(1, 2);
     print(e);
-    backward(d, i, e);
+    backward(d, i, e, 0.1);
     o = forward(d, i);
     print(o);
 

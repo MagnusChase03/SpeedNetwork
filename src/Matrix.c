@@ -134,6 +134,49 @@ Matrix mult(Matrix m, double x) {
 
 }
 
+Matrix sum(Matrix m, int d) {
+
+    if (d != 0 && d != 1) {
+    
+        fprintf(stderr, "Error: Dimension can only be 0 or 1 for sum.");
+        exit(1);
+    
+    }
+
+    if (d == 0) {
+
+        Matrix y = createMatrix(1, m.cols);
+        for (int i = 0; i < m.rows; i++) {
+
+            for (int j = 0; j < m.cols; j++) {
+
+                y.data[0][j] += m.data[i][j];
+
+            }
+
+        }
+
+        return y;
+
+    } else if (d == 1) {
+
+        Matrix y = createMatrix(m.rows, 1);
+        for (int i = 0; i < m.rows; i++) {
+
+            for (int j = 0; j < m.cols; j++) {
+
+                y.data[i][0] += m.data[i][j];
+
+            }
+
+        }
+
+        return y;
+
+    }
+
+}
+
 Matrix dot(Matrix a, Matrix b) {
 
     if (a.cols != b.rows) {
@@ -180,6 +223,26 @@ Matrix sigmoidMatrix(Matrix m) {
         }
 
     }
+
+    return y;
+
+}
+
+Matrix logLiklyhood(Matrix m) {
+
+    Matrix sums = sum(m, 1);
+    Matrix y = createMatrix(m.rows, m.cols);
+    for (int i = 0; i < m.rows; i++) {
+
+        for (int j = 0; j < m.cols; j++) {
+
+            y.data[i][j] = m.data[i][j] / sums.data[i][0]; 
+
+        }
+
+    }
+
+    freeMatrix(sums);
 
     return y;
 

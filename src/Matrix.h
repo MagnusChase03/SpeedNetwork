@@ -23,8 +23,10 @@ void copyMatrix(Matrix a, Matrix b);
 Matrix add(Matrix a, Matrix b);
 Matrix sub(Matrix a, Matrix b);
 Matrix mult(Matrix m, double x);
+Matrix sum(Matrix m, int d);
 Matrix dot(Matrix a, Matrix b);
 Matrix sigmoidMatrix(Matrix m);
+Matrix logLiklyhood(Matrix m);
 
 Matrix transpose(Matrix m);
 

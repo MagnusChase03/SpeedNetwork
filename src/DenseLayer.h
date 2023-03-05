@@ -5,15 +5,18 @@
 
 typedef struct {
 
+    Matrix inputs;
+    Matrix outputs;
     Matrix weights;
     Matrix bias;
+    double learningRate;
 
 } DenseLayer;
 
-DenseLayer createDenseLayer(int inputSize, int outputSize);
+DenseLayer createDenseLayer(int inputSize, int outputSize, double lr);
 void freeDenseLayer(DenseLayer d);
 
 Matrix forward(DenseLayer d, Matrix m);
-Matrix backward(DenseLayer d, Matrix i, Matrix e, double lr);
+Matrix backward(DenseLayer d, Matrix e);
 
 #endif

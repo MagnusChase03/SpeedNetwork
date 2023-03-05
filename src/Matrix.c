@@ -124,7 +124,7 @@ Matrix mult(Matrix m, double x) {
 
         for (int j = 0; j < m.cols; j++) {
 
-            y.data[i][j] *= x;
+            y.data[i][j] = m.data[i][j] * x;
         
         }
 
